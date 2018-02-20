@@ -12,8 +12,6 @@ import time, random, sys, json, codecs, threading, glob, re, string, os, request
 import wikipedia, urllib
 from gtts import gTTS
 from googletrans import Translator
-#from thrift.transport import TSSLSocket
-#transport = TSSLSocket.TSSLServerSocket(host, port, certfile="tanysyz.pem")
 
 botStart = time.time() 
 
