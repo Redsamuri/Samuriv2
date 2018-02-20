@@ -58,7 +58,7 @@ class qr():
     def get(self):
         client = createTransport(LINE_AUTH_QUERY_PATH_FIR, None, TalkService.Client)
 
-        qr = client.getAuthQrcode(keepLoggedIn=1, systemName="CLIENT")
+        qr = client.getAuthQrcode(keepLoggedIn=1, systemName="HelloWorld")
         uri = "line://au/q/" + qr.verifier
         clb = LineCallback(defaultCallback)
         clb.QrUrl(uri, 1)
