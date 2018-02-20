@@ -6,9 +6,9 @@ import ssl
 from thrift.protocol import TCompactProtocol
 from thrift.transport import THttpClient
 from . import svs
-from LineAPI.svs import TalkService
-from LineAPI.svs import LineLoginService
-from LineAPI.svs.ttypes import LoginRequest
+from Helper.svs import TalkService
+from Helper.svs import LineLoginService
+from Helper.svs.ttypes import LoginRequest
 
 host = 'https://gd2.line.naver.jp'
 LINE_AUTH_QUERY_PATH = '/api/v4p/rs'
