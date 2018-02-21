@@ -2,6 +2,7 @@
 # Thanks For Tuhan YME
 # Thanks for My TEAM Hello World
 # Support by Alin
+# Lib edition 0.9.3/Tanysyz
 import HelloWorld
 from HelloWorld.lib.Gen.ttypes import *
 from datetime import datetime
@@ -20,8 +21,12 @@ botStart = time.time()
 #cl.loginResult()
 
 cl = HelloWorld.LINE()
-cl.login(token="tokenmu")
+cl.login("EMAILMU","PASSWORD")
 cl.loginResult()
+
+#cl = HelloWorld.LINE()
+#cl.login(token="tokenmu")
+#cl.loginResult()
 
 print "[    Login Success    ]"
 reload(sys)
