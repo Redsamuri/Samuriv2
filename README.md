@@ -1,5 +1,6 @@
 # HelloWorld
-Turn Back Python2
+Turn Back Python 2.7
+Must!! Python 2.7
 
 1. apt install python
 2. apt install git
