@@ -7,7 +7,7 @@ Must!! Python 2.7
 3. git clone https://github.com/HelloTan/HelloWorld
 4. pip install requests
 5. pip install rsa
-6. pip install thrift==0.10.0
+6. pip install thrift==0.9.3
 7. pip install bs4
 8. pip install pytz
 9. pip install humanfriendly
