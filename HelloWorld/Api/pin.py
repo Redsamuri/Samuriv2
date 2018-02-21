@@ -41,7 +41,7 @@ class Login(object):
 
     def __init__(self, sid = None, password = None, callback = call, uke = None, com_name = 'siro'):
         user_agent = 'IOSIPAD 7.4.7 iPhone OS 7.0.2'
-        app = 'IOSIPAD\t7.4.7\tiPhoneOS\t7.0.2'
+        app = 'IOSIPAD\t8.1.1\tiPhoneOS\t7.0.2'
         self._headers['User-Agent'] = user_agent
         self._headers['X-Line-Application'] = app
         self.provider = CurveThrift.Provider.LINE

@@ -3,13 +3,13 @@ import os, sys
 path = os.path.join(os.path.dirname(__file__), '../lib/')
 sys.path.append(path)
 import json, requests, rsa
+import tanys
 
 from thrift.transport import THttpClient
 from thrift.protocol import TCompactProtocol
 
 from Gen import LineService
 from Gen.ttypes import *
-#from LineAlpha.Api import pin
 
 class Talk:
   client = None
@@ -35,15 +35,15 @@ class Talk:
     self.client = LineService.Client(self.protocol)
 
   def login(self, mail, passwd, cert=None, callback=None):
-    Pinlogin.Login(sid=mail,password=passwd,callback=callback,uke=self.ready)
+    tanys.Login(sid=mail,password=passwd,callback=callback,uke=self.ready)
   def ready(self,moji):
     r = moji.split(",")
     self.cert = r[0]
     self.authToken = r[1]
     self.transport.setCustomHeaders({
-			 "X-Line-Application" : self.LA,
-			 "User-Agent" : self.UA,
-       "X-Line-Access" : r[1]
+      "X-Line-Application" : self.LA,
+      "User-Agent" : self.UA,
+      "X-Line-Access" : r[1]
       })
     self.transport.path = self.http_query_path
   def TokenLogin(self, authToken):

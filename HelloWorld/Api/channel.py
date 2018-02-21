@@ -64,7 +64,7 @@ class Channel:
         }
 
         r = requests.post(
-            "http://" + self.host + "/mh/api/v24/post/create.json",
+            "http://" + self.host + "/mh/api/v39/post/create.json",
             headers = header,
             data = json.dumps(payload)
         )
@@ -85,7 +85,7 @@ class Channel:
             "contents" : { "text" : text ,"media" :  [{u'objectId': u'F57144CF9ECC4AD2E162E68554D1A8BD1a1ab0t04ff07f6'}]}
         }
         r = requests.post(
-            "http://" + self.host + "/mh/api/v24/post/create.json",
+            "http://" + self.host + "/mh/api/v39/post/create.json",
             headers = header,
             data = json.dumps(payload)
         )
@@ -107,7 +107,7 @@ class Channel:
         }
 
         r = requests.post(
-            "http://" + self.host + "/mh/api/v23/like/create.json?homeId=" + mid,
+            "http://" + self.host + "/mh/api/v39/like/create.json?homeId=" + mid,
             headers = header,
             data = json.dumps(payload)
         )
@@ -128,7 +128,7 @@ class Channel:
         }
 
         r = requests.post(
-            "http://" + self.host + "/mh/api/v23/comment/create.json?homeId=" + mid,
+            "http://" + self.host + "/mh/api/v39/comment/create.json?homeId=" + mid,
             headers = header,
             data = json.dumps(payload)
         )
@@ -144,7 +144,7 @@ class Channel:
         }
 
         r = requests.get(
-            "http://" + self.host + "/tl/mapi/v21/activities?postLimit=" + str(limit),
+            "http://" + self.host + "/tl/mapi/v39/activities?postLimit=" + str(limit),
             headers = header
         )
         return r.json()
@@ -198,7 +198,7 @@ class Channel:
 
         }
         r = requests.get(
-            "http://" + self.host + "/mh/api/v27/post/list.json?homeId=" + gid + "&commentLimit=" + commentLimit + "&sourceType=TALKROOM&likeLimit=" + likeLimit,
+            "http://" + self.host + "/mh/api/v39/post/list.json?homeId=" + gid + "&commentLimit=" + commentLimit + "&sourceType=TALKROOM&likeLimit=" + likeLimit,
             headers = header
         )
         return r.json()
@@ -215,7 +215,7 @@ class Channel:
                    "contents":{"text":text}
                    }
         r = requests.post(
-            "http://" + self.host + "/mh/api/v27/post/create.json",
+            "http://" + self.host + "/mh/api/v39/post/create.json",
             headers = header,
             data = json.dumps(payload)
             )
@@ -244,7 +244,7 @@ class Channel:
         }
 
         r = requests.get(
-        "http://" + self.host + "/mh/api/v27/post/list.json?homeId=" + mid + "&commentLimit=2&sourceType=LINE_PROFILE_COVER&likeLimit=6",
+        "http://" + self.host + "/mh/api/v39/post/list.json?homeId=" + mid + "&commentLimit=2&sourceType=LINE_PROFILE_COVER&likeLimit=6",
         headers = header
         )
         return r.json()
