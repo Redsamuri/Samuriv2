@@ -5,6 +5,8 @@ Must!! Python 2.7
 
 Fix qr, Email
 
+BUG : LineApi.py not update, You can update yourself
+
 1. apt install python
 2. apt install git
 3. git clone https://github.com/HelloTan/HelloWorld
