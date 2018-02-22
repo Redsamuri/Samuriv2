@@ -668,7 +668,7 @@ def bot(op):
                         cover = cl.channel.getCover(mid)          
                         path = str(cover)
                         cl.sendImageWithURL(msg.to, path)
-                elif key["keyCommand"]+"stealmid" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealmid"):
                     sep = msg.text.split(" ")
                     _name = msg.text.replace(sep[0] + " @","")
                     _nametarget = _name.rstrip(' ')
@@ -676,7 +676,7 @@ def bot(op):
                     for g in gs.members:
                         if _nametarget == g.displayName:
                             cl.sendText(msg.to, g.mid)
-                elif key["keyCommand"]+"stealname" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealname"):
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention1 = mention["MENTIONEES"][0]["M"]
                     contact = cl.getContact(mention1)
@@ -684,7 +684,7 @@ def bot(op):
                         cl.sendText(msg.to, "[ StatusMessage ]\n" + contact.displayName)
                     except:
                         pass
-                elif key["keyCommand"]+"stealbio" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealbio"):
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention1 = mention["MENTIONEES"][0]["M"]
                     contact = cl.getContact(mention1)
@@ -692,7 +692,7 @@ def bot(op):
                         cl.sendText(msg.to, "[ StatusMessage ]\n" + contact.statusMessage)
                     except:
                         pass
-                elif key["keyCommand"]+"stealpicture" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealpicture"):
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention1 = mention["MENTIONEES"][0]["M"]
                     contact = cl.getContact(mention1)
@@ -701,7 +701,7 @@ def bot(op):
                         cl.sendImageWithURL(msg.to,image)
                     except:
                         pass
-                elif key["keyCommand"]+"stealcover" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealcover"):
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention1 = mention["MENTIONEES"][0]["M"]
                     contact = cl.getContact(mention1)
@@ -711,14 +711,14 @@ def bot(op):
                         cl.sendImageWithURL(msg.to,path)
                     except:
                         pass
-                elif key["keyCommand"]+"stealcontact" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"stealcontact"):
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention1 = mention["MENTIONEES"][0]["M"]                
                     mmid = cl.getContact(mention1)
                     msg.contentType = 13
                     msg.contentMetadata = {"mid": mention1}
                     cl.sendMessage(msg)
-                elif key["keyCommand"]+"cloneprofile" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"cloneprofile"):
                        sep = msg.text.split(" ")
                        _name = msg.text.replace(sep[0] + " @","")
                        _nametarget = _name.rstrip('  ')
@@ -744,7 +744,7 @@ def bot(op):
                     except Exception as e:
                         cl.sendText(msg.to, str(e))
                 
-                elif key["keyCommand"]+"checkmid:" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"checkmid:"):
                     separate = msg.text.split(" ")
                     saya = msg.text.replace(separate[0] + " ","")
                     msg.contentType = 13
@@ -773,21 +773,21 @@ def bot(op):
                     msgs+="\n═════════List Blocked═════════\n\nTotal Blocked : %i" % len(kontak)
                     cl.sendText(msg.to, msgs)
                     
-                elif key["keyCommand"]+"gbroadcast:" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"gbroadcast:"):
                     sep = msg.text.split(" ")
                     txt = msg.text.replace(sep[0] + " ","")
                     groups = cl.getGroupIdsJoined()
                     for group in groups:
                         cl.sendText(group, "[ Broadcast ]\n{}".format(str(txt)))
                     cl.sendText(msg.to, "Berhasil broadcast ke {} group".format(str(len(groups))))
-                elif key["keyCommand"]+"fbroadcast:" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"fbroadcast:"):
                     sep = msg.text.split(" ")
                     txt = msg.text.replace(sep[0] + " ","")
                     friends = cl.getAllContactIds()
                     for friend in friends:
                         cl.sendText(friend, "[ Broadcast ]\n{}".format(str(txt)))
                     cl.sendText(msg.to, "Berhasil broadcast ke {} teman".format(str(len(friends))))
-                elif key["keyCommand"]+"allbroadcast:" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"allbroadcast:"):
                     sep = msg.text.split(" ")
                     txt = msg.text.replace(sep[0] + " ","")
                     friends = cl.getAllContactIds()
@@ -802,7 +802,7 @@ def bot(op):
     #================================ SELF KICKER =================================#
     #==============================================================================#
     
-                elif key["keyCommand"]+"kick" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"kick"):
                        targets = []
                        mention = eval(msg.contentMetadata["MENTION"])
                        mention["MENTIONEES"] [0] ["M"]
@@ -814,7 +814,7 @@ def bot(op):
                            except:
                                cl.sendText(msg.to,"Error")
                 
-                elif key["keyCommand"]+"ulti" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"ulti"):
                        targets = []
                        mention = eval(msg.contentMetadata["MENTION"])
                        mention["MENTIONEES"] [0] ["M"]
@@ -941,7 +941,7 @@ def bot(op):
                     except:
                         pass
                 
-                elif key["keyCommand"]+"changegroupname" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"changegroupname"):
                     if msg.toType == 2:
                         X = cl.getGroup(msg.to)
                         sep = msg.text.split(" ")
@@ -950,7 +950,7 @@ def bot(op):
     #==============================================================================#
     #================================= SELF MIMIC =================================#
     #==============================================================================#
-                elif key["keyCommand"]+"mimicadd" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"mimicadd"):
                     targets = []
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention["MENTIONEES"][0]["M"]
@@ -965,7 +965,7 @@ def bot(op):
                             cl.sendText(msg.to,"Fail !")
                             break
                         
-                elif key["keyCommand"]+"mimicdel" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"mimicdel"):
                     targets = []
                     mention = eval(msg.contentMetadata["MENTION"])
                     mention["MENTIONEES"][0]["M"]
@@ -989,7 +989,7 @@ def bot(op):
                             mc += "╠ "+cl.getContact(mi_d).displayName + "\n"
                         cl.sendText(msg.to,mc + "\n═════════List Member═════════")
     
-                elif key["keyCommand"]+"mimic" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"mimic"):
                     sep = msg.text.split(" ")
                     cmd = msg.text.replace(sep[0] + " ","")
                     if cmd == "on":
@@ -1183,7 +1183,7 @@ def bot(op):
     #==============================================================================#
     #================================ SELF SPECIAL ================================#
     #==============================================================================#
-                elif key["keyCommand"]+"youtubesearch" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"youtubesearch"):
                     sep = msg.text.split(" ")
                     search = msg.text.replace(sep[0] + " ","")
                     params = {"search_query": search}
@@ -1203,7 +1203,7 @@ def bot(op):
                         cl.sendText(msg.to, str(ret_))
     
             
-                elif key["keyCommand"]+"wikipedia" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"wikipedia"):
                       try:
                           sep = msg.text.split(" ")
                           wiki = msg.text.replace(sep[0] + " ","")
@@ -1223,7 +1223,7 @@ def bot(op):
                               except Exception as e:
                                   cl.sendText(msg.to, str(e))
                                   
-                elif key["keyCommand"]+"lyric" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"lyric"):
                     sep = msg.text.split(" ")
                     search = msg.text.replace(sep[0] + " ","")
                     params = {'songname': search}
@@ -1249,7 +1249,7 @@ def bot(op):
                         except:
                             cl.sendText(to, "Lirik tidak ditemukan")
                             
-                elif key["keyCommand"]+"music" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"music"):
                     sep = msg.text.split(" ")
                     search = msg.text.replace(sep[0] + " ","")
                     params = {'songname': search}
@@ -1270,7 +1270,7 @@ def bot(op):
                         except:
                             cl.sendText(to, "Musik tidak ditemukan")
     
-                elif key["keyCommand"]+"imagesearch" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"imagesearch"):
                     start = time.time()
                     separate = msg.text.split(" ")
                     search = msg.text.replace(separate[0] + " ","")
@@ -1301,7 +1301,7 @@ def bot(op):
                     rst = hasil + ", " + inihari.strftime('%d') + " - " + bln + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
                     cl.sendText(msg.to, rst)
                     
-                elif key["keyCommand"]+"profileig" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"profileig"):
                     sep = msg.text.split(" ")
                     search = msg.text.replace(sep[0] + " ","")
                     with requests.session() as web:
@@ -1330,7 +1330,7 @@ def bot(op):
                         except:
                             cl.sendText(msg.to, "Pengguna tidak ditemukan")
                             
-                elif key["keyCommand"]+"checkdate" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"checkdate"):
                     sep = msg.text.split(" ")
                     tanggal = msg.text.replace(sep[0] + " ","")
                     r=requests.get('https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
@@ -1345,7 +1345,7 @@ def bot(op):
     #==============================================================================#
                 #               T E X T     T O     S P E E C H             #
                 
-                elif key["keyCommand"]+"say-" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"say-"):
                     sep = msg.text.split("-")
                     sep = sep[1].split(" ")
                     lang = sep[0]
@@ -1355,7 +1355,7 @@ def bot(op):
                     cl.sendAudio(msg.to, "hasil.mp3")
     #==============================================================================#
             #                   T R A N S L A T E                   #
-                elif key["keyCommand"]+"tr-" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"tr-"):
                     sep = msg.text.split("-")
                     sep = sep[1].split(" ")
                     lang = sep[0]
@@ -1441,7 +1441,7 @@ def bot(op):
                         cl.sendText(msg.to,"My Set AutoRespon : " + str(message["replyPesan"]))
                     else:
                         cl.sendText(msg.to,"My Set AutoRespon : No messages are set")
-                elif key["keyCommand"]+"autorespon:" in msg.text.lower():
+                elif msg.text.lower().startswith(key["keyCommand"]+"autorespon:"):
                     sep = msg.text.split(" ")
                     text = msg.text.replace(sep[0] + " ","")
                     try:
