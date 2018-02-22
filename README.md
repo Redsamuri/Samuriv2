@@ -22,3 +22,9 @@ Fix qr, Email
 
 
 Happy Play With Bot >_<
+
+
+If You want ASK!
+
+Join in square :
+https://line.me/ti/g2/7k0FNnZ4b0CFtYTra58BVGtbOnLZJ4PukdMQriMlXLEQtlUs16CbDq_ej5pSGGkB
