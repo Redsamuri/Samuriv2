@@ -1,4 +1,3 @@
-# Embedded file name: /Library/Python/2.7/site-packages/LineAlpha/Api/LineTracer.py
 from .LineClient import LineClient
 from types import *
 from ..Gen.ttypes import OpType
@@ -23,7 +22,7 @@ class LineTracer(object):
 
     def execute(self):
         try:
-            operations = self.client.fetchOperation(self.client.revision, 10)
+            operations = self.client.fetchOperation(self.client.revision, 50)
         except EOFError:
             return
         except KeyboardInterrupt:
@@ -34,4 +33,6 @@ class LineTracer(object):
         for op in operations:
             if op.type in self.OpInterrupt.keys():
                 self.OpInterrupt[op.type](op)
+            else:
+                print op.type
             self.client.revision = max(op.revision, self.client.revision)
