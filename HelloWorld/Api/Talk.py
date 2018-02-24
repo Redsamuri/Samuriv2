@@ -36,6 +36,7 @@ class Talk:
 
   def login(self, mail, passwd, cert=None, callback=None):
     tanys.Login(sid=mail,password=passwd,callback=callback,uke=self.ready)
+    
   def ready(self,moji):
     r = moji.split(",")
     self.cert = r[0]
