@@ -16,13 +16,13 @@ from googletrans import Translator
 
 botStart = time.time() 
 
-#cl = HelloWorld.LINE()
-#cl.login(token=qr().get())
-#cl.loginResult()
-
 cl = HelloWorld.LINE()
-cl.login("EMAILMU","PASSWORD")
+cl.login(token=qr().get())
 cl.loginResult()
+
+#cl = HelloWorld.LINE()
+#cl.login("EMAILMU","PASSWORD")
+#cl.loginResult()
 
 #cl = HelloWorld.LINE()
 #cl.login(token="tokenmu")
