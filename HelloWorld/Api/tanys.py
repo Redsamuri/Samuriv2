@@ -71,7 +71,6 @@ class Login(object):
         login_request.keepLoggedIn = 1
         login_request.accessLocation = "127.0.0,1"
         login_request.systemName = self.pcname
-        #login_request.certificate = self.cert
         login_request.e2eeVersion = 1
 
         self.transport.path = self.login_query_path
@@ -80,7 +79,6 @@ class Login(object):
         if r.type == LoginResultType.SUCCESS:
             self.setAttr(r.authToken, self.certificate)
         elif r.type == LoginResultType.REQUIRE_QRCODE:
-            # im not aware of this feature
             pass
 
         elif r.type == LoginResultType.REQUIRE_DEVICE_CONFIRM:
