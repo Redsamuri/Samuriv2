@@ -39,7 +39,7 @@ class Poll:
     #usleep = lambda x: time.sleep(x/1000000.0)
     while True:
       try:
-        Ops = self.client.fetchOps(self.rev, 5, 0, 0)
+        Ops = self.client.fetchOps(self.rev, 50, 0, 0)
       except EOFError:
         raise Exception("It might be wrong revision\n" + str(self.rev))
 
