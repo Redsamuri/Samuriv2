@@ -1477,24 +1477,3 @@ def bot(op):
 
 while True:
 	bot(cl.Poll.stream(500000))
-#while True:
- #   try:
-  #      Ops = cl.fetchOps(cl.Poll.rev, 5)
-   # except EOFError:
-    #    raise Exception("It might be wrong revision\n" + str(cl.Poll.rev))
-
-    #for Op in Ops:
-     #   if (Op.type != OpType.END_OF_OPERATION):
-      #      cl.Poll.rev = max(cl.Poll.rev, Op.revision)
-       #     bot(Op)
-
-
-#while True:
- #   try:
-  #      cl._thriftTransport.targetPath("/P4")
-   #     bot(cl.Poll.stream(500000))
-    #    cl._thriftTransport.targetPath("/H4")
-    #except KeyboardInterrupt:
-	#sys.exit(0)
-    #except:
-     #   pass
