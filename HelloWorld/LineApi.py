@@ -86,8 +86,8 @@ class LINE:
 
   """Message"""
 
-   def sendMessage(self, messageObject):
-        return self.Talk.client.sendMessage(0,messageObject)
+  def sendMessage(self, messageObject):
+       return self.Talk.client.sendMessage(0,messageObject)
 
   def sendText(self, Tomid, text):
         msg = Message()
