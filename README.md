@@ -16,6 +16,6 @@ BUG : LineApi.py not update, You can update yourself
 8.  pkg install pytz
 9.  pip install pytz
 10. pip2 install pytz
-11.  pip install humanfriendly
+11. pip install humanfriendly
 12. pip install gtts
 13. pip install googletrans
