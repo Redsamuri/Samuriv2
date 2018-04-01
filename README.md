@@ -1,10 +1,10 @@
-# HelloWorld
-Turn Back Python 2.7
+# WELCOME TO RED SAMURI HelloWorld
+##Turn Back Python 2.7
 
-Must!! Python 2.7
+##Must!! Python 2.7
 
 
-BUG : LineApi.py not update, You can update yourself
+###BUG : LineApi.py not update, You can update yourself
 
 1.  apt install python
 2.  apt install git
