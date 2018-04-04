@@ -23,6 +23,6 @@
 15. cd Samuriv2
 16. python2 Redsb1.py
 
-oo#########No Edit Token########oo
-oo#########No Edit mid##########oo
+1oo#########No Edit Token########oo
+2oo#########No Edit mid##########oo
 ooo🙏BY:RED SAMURI SELF BOT🙏ooo
