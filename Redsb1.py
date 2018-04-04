@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import LINETCR
-from LINETCR.lib.curve.ttypes import *
+import HelloWorld
+from HelloWorld.lib.Gen.ttypes import *
 from datetime import datetime
 import time, random, sys, ast, re, os, io, json, subprocess, threading, string, codecs, requests, ctypes, urllib, urllib2, urllib3, wikipedia, tempfile
 from bs4 import BeautifulSoup
@@ -14,11 +14,15 @@ from gtts import gTTS
 from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
 
-#cl = LINETCR.LINE()
+#cl = HelloWorld.LINE()
 #cl.login(token="ErHsHG58lvVUFDtEIDp6.Lkg8ohUsFOz1yZrKJtfpHG.LfmpMPXz95AxfZccyyYzAhO9QmXF/jRBX+9PSsq8g/I=")
 #cl.loginResult()
 
-cl = LINETCR.LINE()
+#cl = HelloWorld.LINE()
+#cl.login("EMAILMU","PASSWORD")
+#cl.loginResult()
+
+cl = HelloWorld.LINE()
 cl.login(token=qr().get())
 cl.loginResult()
 
@@ -26,6 +30,7 @@ cl.loginResult()
 print "\n[ ลอคอินRedselfbotสำเร็จแล้ว ]"
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
 
 helpmsg ="""╔══════════════════ 
 ║  🌾RED BOT LINE THAILAND🌾
@@ -206,8 +211,8 @@ helpThx ="""╔══════════════════
 KAC=[cl]
 mid = cl.getProfile().mid
 mid = cl.getProfile().mid
-Bots=[mid,"ub5abe828cd964292195c3c59d6322033"]
-admin=["ub5abe828cd964292195c3c59d6322033"]
+Bots=[mid]
+admin=[mid]
 
 
 wait = {
@@ -246,8 +251,8 @@ wait = {
     "Simi":{},    
     "lang":"JP",
     "BlGroup":{}
+    
     }
-
 wait2 = {
     "readPoint":{},
     "readMember":{},
@@ -558,7 +563,7 @@ def bot(op):
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
-                if msg.from_ == "ub5abe828cd964292195c3c59d6322033":
+                if msg.from_ == mid:
                     if "join:" in msg.text:
                         list_ = msg.text.split(":")
                         try:
