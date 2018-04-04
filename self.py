@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-# Thanks For Tuhan YME
-# Thanks for My TEAM Hello World
-# Support by Alin
+
 # Lib edition 0.9.3/Tanysyz
 import HelloWorld
 from HelloWorld.lib.Gen.ttypes import *
