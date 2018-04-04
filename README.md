@@ -3,9 +3,6 @@
 
 ##Must!! Python 2.7
 
-
-###BUG : LineApi.py not update, You can update yourself
-
 1.  apt install python
 2.  apt install git
 3.  git clone https://github.com/Redsamuri/Samuriv2
@@ -23,6 +20,6 @@
 15. cd Samuriv2
 16. python2 Redsb1.py
 
- 1. oo#########No Edit Token########oo
- 2. oo#########No Edit mid##########oo
+ 1. oo#########Not Edit Token########oo
+ 2. oo#########Not Edit mid##########oo
  3. ooo🙏BY:RED SAMURI SELF BOT🙏ooo
