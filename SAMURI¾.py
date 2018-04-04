@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import LINETCR
-from LINETCR.lib.curve.ttypes import *
+import HelloWold
+from HelloWorld.lib.Gen.ttypes import *
 from datetime import datetime
 import time, random, sys, ast, re, os, io, json, subprocess, threading, string, codecs, requests, ctypes, urllib, urllib2, urllib3, wikipedia, tempfile
 from bs4 import BeautifulSoup
@@ -12,15 +12,15 @@ from threading import Thread
 from gtts import gTTS
 from googletrans import Translator
 
-cl = LINETCR.LINE()
+cl = HelloWold.LINE()
 cl.login(token=qr().get())
 cl.loginResult()
 
-ki1 = LINETCR.LINE()
+ki1 = HelloWold.LINE()
 ki1.login(token=qr().get())
 ki1.loginResult()
 
-ki2 = LINETCR.LINE()
+ki2 = HelloWold.LINE()
 ki2.login(token=qr().get())
 ki2.loginResult()
 
@@ -265,13 +265,13 @@ autoinvite = []
 autoleaveroom = []
 targets = []
 mid = cl.getProfile().mid
-Bots = ["ub5abe828cd964292195c3c59d6322033",mid]
-self = ["ub5abe828cd964292195c3c59d6322033",mid]
-admin = "ub5abe828cd964292195c3c59d6322033"
-admsa = "ub5abe828cd964292195c3c59d6322033"
-owner = "ub5abe828cd964292195c3c59d6322033"
-adminMID = "ub5abe828cd964292195c3c59d6322033"
-Creator="ub5abe828cd964292195c3c59d6322033"
+Bots = [mid]
+self = [mid]
+admin = [mid]"
+admsa = [mid]"
+owner = [mid]"
+adminMID = [mid]
+Creator= [mid]
 wait = {
     "alwayRead":False,
     "detectMention":True,    
@@ -594,16 +594,7 @@ def bot(op):
                             try:
                                 G = ki2.getGroup(op.param1)
                             except:
-                                try:
-                                    G = ki3.getGroup(op.param1)
-                                except:
-                                    try:
-                                        G = ki4.getGroup(op.param1)
-				    except:
-					try:
-                                            G = ki5.getGroup(op.param1)
-                                        except:
-                                            pass
+                                pass                                         
                     G.name = wait['pro_name'][op.param1]
                     try:
                         cl.updateGroup(G)
@@ -617,13 +608,7 @@ def bot(op):
                                 try:
                                     ki2.updateGroup(G)
                                 except:
-                                    try:
-                                        ki3.updateGroup(G)
-                                    except:
-                                        try:
-                                            ki4.updateGroup(G)
-                                        except:
-                                            pass
+                                    pass                                         
                     if op.param2 in ken:
                         pass
                     else:
@@ -636,13 +621,7 @@ def bot(op):
                                 try:
                                     ki2.kickoutFromGroup(op.param1,[op.param2])
                                 except:
-                                    try:
-                                        ki3.kickoutFromGroup(op.param1,[op.param2])
-                                    except:
-                                        try:
-                                            ki4.kickoutFromGroup(op.param1,[op.param2])
-                                        except:
-                                            pass
+                                    pass                                 
                                         cl.sendText(op.param1,"Group Name Lock")
                                         ki1.sendText(op.param1,"Haddeuh dikunci Pe'a")
                                         ki2.sendText(op.param1,"Wekawekaweka (Har Har)")
@@ -1218,7 +1197,7 @@ def bot(op):
             msg = op.message
             if msg.contentType == 13:
                 if wait["winvite"] == True:
-                     if msg.from_ == admin:
+                     if msg.from_ == mid:
                          _name = msg.contentMetadata["displayName"]
                          invite = msg.contentMetadata["mid"]
                          groups = cl.getGroup(msg.to)
