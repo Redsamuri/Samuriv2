@@ -229,7 +229,7 @@ wait = {
     'autoCancel':{"on":False,"members":5},
     'leaveRoom':True,
     'timeline':False,
-    'autoAdd':True,
+    'autoAdd':False,
     'message':"""🌾(●´з`)♡🌹แอดมาทำไมคับ 🌸แอดมาจีบรึแอดมารัน🌹(´ε｀ )♡🌾""",
     "lang":"JP",
     "comment":"...by redbot",
@@ -625,7 +625,40 @@ def bot(op):
                            if mention['M'] in Bots:
                                   cl.sendText(msg.to,ret_)
                                   cl.kickoutFromGroup(msg.to,[msg.from_])
-                                  
+            if op.type == 25:
+                msg = op.message
+                if msg.contentType == 13:
+            	    if wait["ricoinvite"] == True:
+                         if msg.from_ in admin:
+                             _name = msg.contentMetadata["displayName"]
+                             invite = msg.contentMetadata["mid"]
+                             groups = cl.getGroup(msg.to)
+                             pending = groups.invitee
+                             targets = []
+                             for s in groups.members:
+                                 if _name in s.displayName:
+                                     cl.sendText(msg.to,"-> " + _name + " was here")
+                                     break
+                                 elif invite in wait["blacklist"]:
+                                     cl.sendText(msg.to,"Sorry, " + _name + " On Blacklist")
+                                     cl.sendText(msg.to,"Call my daddy to use command !, \n➡Unban: " + invite)
+                                     break                             
+                                 else:
+                                     targets.append(invite)
+                             if targets == []:
+                                 pass
+                             else:
+                                 for target in targets:
+                                     try:
+                                         cl.findAndAddContactsByMid(target)
+                                         cl.inviteIntoGroup(msg.to,[target])
+                                         random.choice(KAC).sendText(msg.to,"Invited this nigga💋: \n➡" + _name)
+                                         wait2["ricoinvite"] = False
+                                         break                              
+                                     except:             
+                                              cl.sendText(msg.to,"Negative, Err0r Detected")
+                                              wait2["ricoinvite"] = False
+                                              break                       
             if msg.contentType == 13:
                 if wait['invite'] == True:
                      _name = msg.contentMetadata["displayName"]
@@ -1032,117 +1065,6 @@ def bot(op):
                     else:
                         cl.sendText(msg.to,"Share already off")
 #======================================================#
-            elif msg.text in ["Thx1","thx1"]:
-                cl.sendText(msg.to,"[เช็คข้อความต้อนรับของคุณ]\n\n" + str(wait["acomment"]))
-
-            elif msg.text in ["Thx2","thx2"]:
-                cl.sendText(msg.to,"[เช็คข้อความกล่าวถึงคนออกจากกลุ่ม]\n\n" + str(wait["bcomment"]))
-
-            elif msg.text in ["Thx3","thx3"]:
-                cl.sendText(msg.to,"[เช็คข้อความกล่าวถึงคนลบสมาชิก]\n\n" + str(wait["ccomment"]))
-#======================================================#
-            elif "Thx1:" in msg.text:
-                c = msg.text.replace("Thx1:","")
-                if c in [""," ","\n",None]:
-                    cl.sendText(msg.to,"เกิดข้อผิดพลาด..!!")
-                else:
-                    wait["acomment"] = c
-                    cl.sendText(msg.to,"➠ ตั้งค่าข้อความต้อนรับ👌\n\n" + c)
-
-            elif "Thx2:" in msg.text:
-                c = msg.text.replace("Thx2:","")
-                if c in [""," ","\n",None]:
-                    cl.sendText(msg.to,"เกิดข้อผิดพลาด..!!")
-                else:
-                    wait["bcomment"] = c
-                    cl.sendText(msg.to,"➠ ตั้งค่าข้อความกล่าวถึงคนออกจากกลุ่ม👌\n\n" + c)
-
-            elif "Thx3:" in msg.text:
-                c = msg.text.replace("Thx3:","")
-                if c in [""," ","\n",None]:
-                    cl.sendText(msg.to,"เกิดข้อผิดพลาด..!!")
-                else:
-                    wait["ccomment"] = c
-                    cl.sendText(msg.to,"➠ ตั้งค่าข้อความกล่าวถึงคนลบสมาชิก👌\n\n" + c)
-#======================================================#
-            elif msg.text in ["Thx1 on"]:
-                if wait["acommentOn"] == True:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความต้อนรับเเล้ว👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-                else:
-                    wait["acommentOn"] = True
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความต้อนรับเเล้ว👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-
-            elif msg.text in ["Thx1 off"]:
-                if wait["acommentOn"] == False:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความต้อนรับเเล้ว👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-                else:
-                    wait["acommentOn"] = False
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความต้อนรับเเล้ว👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-#======================================================#
-            elif msg.text in ["Thx2 on"]:
-                if wait["bcommentOn"] == True:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความกล่าวถึงคนออกจากกลุ่ม👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-                else:
-                    wait["bcommentOn"] = True
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความกล่าวถึงคนออกจากกลุ่ม👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-
-            elif msg.text in ["Thx2 off"]:
-                if wait["bcommentOn"] == False:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความกล่าวถึงคนออกจากกลุ่ม👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-                else:
-                    wait["bcommentOn"] = False
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความกล่าวถึงคนออกจากกลุ่ม👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-#======================================================#
-            elif msg.text in ["Thx3 on"]:
-                if wait["ccommentOn"] == True:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความกล่าวถึงคนลบสมาชิก👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-                else:
-                    wait["ccommentOn"] = True
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ เปิดข้อความกล่าวถึงคนลบสมาชิก👌")
-                    else:
-                        cl.sendText(msg.to,"Already on")
-
-            elif msg.text in ["Thx3 off"]:
-                if wait["ccommentOn"] == False:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความกล่าวถึงคนลบสมาชิก👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-                else:
-                    wait["ccommentOn"] = False
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"➠ ปิดข้อความกล่าวถึงคนลบสมาชิก👌")
-                    else:
-                        cl.sendText(msg.to,"Already off")
-#======================================================#
             elif msg.text in ["Red on","red on"]:
                         cl.sendText(msg.to,"一━═┻̿︻̷̿▄☜RED☆SAMURI☆SELFBOT☞ ▄︻̷̿┻̿═━一")
                         cl.sendText(msg.to,"Please wait......")
@@ -1194,58 +1116,6 @@ def bot(op):
                 else:md+="􀜁􀇔􏿿 Invitation Protect:off🔒\n"
                 if wait["cancelprotect"] == True: md+"􀜁􀇔􏿿 CancelProtect:on 🔓\n"
                 else:md+="􀜁􀇔􏿿 Cancel Protect:off 🔒\n"
-                cl.sendText(msg.to,md)
-                msg.contentType = 13
-                msg.contentMetadata = {'mid': admin}
-                cl.sendMessage(msg)
-#======================================================#
-            elif msg.text in ["Set2","เช็ค2"]:
-                print "Setting pick up..."
-                md = "一━═┻̿︻̷̿▄☜RED☆SAMURI☆SELFBOT☞ ▄︻̷̿┻̿═━一\n\n"
-                if wait["likeOn"] == True: md+="􀬁􀆐􏿿 Auto like : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Auto like : off 􀜁􀄰􏿿\n"
-                if wait["alwayRead"] == True: md+="􀬁􀆐􏿿 Read : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁��􏿿 Read : off 􀜁􀄰􏿿\n"
-                if wait["detectMention"] == True: md+="􀬁􀆐􏿿 Autorespon : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁??􏿿 Autorespon : off 􀜁􀄰􏿿\n"
-                if wait["kickMention"] == True: md+="􀬁􀆐􏿿 Autokick: on 􀜁����􏿿\n"
-                else:md+="􀬁􀆐􏿿 Autokick : off 􀜁􀄰􏿿\n"
-                if wait["Notifed"] == True: md+="􀬁􀆐􏿿 Notifed : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Notifed : off 􀜁􀄰􏿿\n"
-                if wait["Notifedbot"] == True: md+="􀬁􀆐􏿿 Notifedbot : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Notifedbot : off 􀜁􀄰􏿿\n"
-                if wait["acommentOn"] == True: md+="􀬁􀆐􏿿 Hhx1 : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Thx1 : off 􀜁􀄰􏿿\n"
-                if wait["bcommentOn"] == True: md+="􀬁􀆐􏿿 Hhx2 : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Thx2 : off 􀜁􀄰􏿿\n"
-                if wait["ccommentOn"] == True: md+="􀬁􀆐􏿿 Hhx3 : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Thx3 : off 􀜁􀄰􏿿\n"
-                if wait["Protectcancl"] == True: md+="􀬁􀆐􏿿 Cancel : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Cancel : off 􀜁􀄰􏿿\n"
-                if wait["winvite"] == True: md+="􀬁􀆐􏿿 Invite : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Invite : off 􀜁􀄰􏿿\n"
-                if wait["pname"] == True: md+="􀬁􀆐􏿿 Namelock : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Namelock : off 􀜁􀄰􏿿\n"
-                if wait["contact"] == True: md+="􀬁􀆐􏿿 Contact : on 􀜁􀄯􏿿\n"
-                else: md+="􀬁􀆐􏿿 Contact : off 􀜁􀄰􏿿\n"
-                if wait["autoJoin"] == True: md+="􀬁􀆐􏿿 Auto join : on 􀜁􀄯􏿿\n"
-                else: md +="􀬁􀆐􏿿 Auto join : off 􀜁􀄰􏿿\n"
-                if wait["autoCancel"]["on"] == True:md+="􀬁􀆐􏿿 Group cancel :" + str(wait["autoCancel"]["members"]) + " 􀜁􀄯􏿿\n"
-                else: md+= "􀬁􀆐􏿿 Group cancel : off 􀜁􀄰􏿿\n"
-                if wait["leaveRoom"] == True: md+="􀬁􀆐􏿿 Auto leave : on 􀜁􀄯􏿿\n"
-                else: md+="􀬁􀆐􏿿 Auto leave : off 􀜁􀄰􏿿\n"
-                if wait["timeline"] == True: md+="􀬁􀆐􏿿 Share : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Share : off 􀜁􀄰􏿿\n"
-                if wait["clock"] == True: md+="􀬁􀆐􏿿 Clock Name : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Clock Name : off 􀜁􀄰􏿿\n"
-                if wait["autoAdd"] == True: md+="􀬁􀆐􏿿 Auto add : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Auto add : off 􀜁􀄰􏿿\n"
-                if wait["commentOn"] == True: md+="􀬁􀆐􏿿 Comment : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Comment : off 􀜁􀄰􏿿\n"
-                if wait["Backup"] == True: md+="􀬁􀆐􏿿 Backup : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Backup : off 􀜁􀄰􏿿\n"
-                if wait["qr"] == True: md+="􀬁􀆐􏿿 Protect QR : on 􀜁􀄯􏿿\n"
-                else:md+="􀬁􀆐􏿿 Protect QR : off 􀜁􀄰􏿿\n"
                 cl.sendText(msg.to,md)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': admin}
@@ -1622,11 +1492,12 @@ def bot(op):
             elif msg.text in ["ลบแชท","ล้างแชท"]:                                   
                 cl.removeAllMessages(op.param2)
                 cl.sendText(msg.to,"❇️Delete Chat Bot❇️")      
-#==============================================================================#
-            elif msg.text in ["Invite"]:
-                wait["invite"] = True
-                cl.sendText(msg.to,"ส่งคทด้วย")
-            
+#==============================================================================#               
+            elif msg.text in ["Invite","ดึง"]:
+              if msg.from_ in admin:
+                wait["ricoinvite"] = True
+                random.choice(KAC).sendText(msg.to,"ส่งคท.ด้วย 😉") 
+                
             elif msg.text in ["อ่านคท"]:
                 wait["contact"] = True
                 cl.sendText(msg.to,"จัดมาโล๊ด")
