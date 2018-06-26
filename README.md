@@ -22,4 +22,5 @@
 
  1. oo#########Not Edit Token########oo
  2. oo#########Not Edit mid##########oo
- 3. ooo🙏BY:RED SAMURI SELF BOT🙏ooo
+ 3. ooo🙏BY: RED SAMURI SELF BOT🙏ooo
+.
