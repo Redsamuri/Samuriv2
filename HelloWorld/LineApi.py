@@ -412,7 +412,7 @@ class LINE:
 
       prof = self.getProfile()
 
-      print("   [  Redsamuri  ]   ")
+      print("   [===========Redsamurai===========  ]   ")
       print("          Thanks for my friend")
       print("=========================================")
       print("MID : " + prof.mid)
