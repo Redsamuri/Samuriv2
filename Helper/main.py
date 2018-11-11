@@ -15,7 +15,7 @@ LINE_AUTH_QUERY_PATH = '/api/v4p/rs'
 LINE_AUTH_QUERY_PATH_FIR = '/api/v4/TalkService.do'
 LINE_CERTIFICATE_PATH = '/Q'
 LINE_API_QUERY_PATH_FIR = '/S4'
-UA, LA = ("Line/7.14.0 iPad5,1 10.2.0", 'IOSIPAD\t7.14.0\tiPhone OS\t10.12.0')
+UA, LA = ("Line/8.16.3", 'IOSIPAD 8.10.1 iPhone OS 11.2.5)
 _session    = requests.session()
 
 def getJson(url, headers=None):
