@@ -3,8 +3,8 @@
 
 ##Must!! Python 2.7
 
-1.  apt install python
-2.  apt install git
+1.  pkg install python
+2.  pkg install git
 3.  git clone https://github.com/Redsamuri/Samuriv2
 4.  pip install requests
 5.  pip install rsa
